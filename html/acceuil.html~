@@ -11,6 +11,13 @@
 		<h1>Cousinade 2017</h1>
 	</header>
 	<nav>
-	
+		<h2>Ajouter vos photos</h2>
+		<div id="completer">
+			<h2>plop</h2>
+			<h2>plip</h2>
+			<h2>plap</h2>
+		</div>
 	</nav>
+	
+	<script type="text/javascript" src="../scripts/nav.js" ></script>
 </body>
