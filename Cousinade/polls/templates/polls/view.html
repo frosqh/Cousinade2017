@@ -1,0 +1,27 @@
+
+
+{% load static %}
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="fr">
+<head>
+	<title>Cousinades 2017</title>
+	<meta charset="utf-8"/>
+	<meta name="author" content="Gaël" />
+	<link rel="stylesheet" type="text/css" href="{%static 'polls/acceuil.css'%}"/>
+</head>
+<body>
+	<header>
+		<h1>Cousinade 2017</h1>
+	</header>
+	<nav>
+		<form method='post'>{%csrf_token%}
+			<input type="Submit" value="Ajoutez vos photos" name="ajout">
+		</form>
+		<div id="completer">
+		</div>
+	</nav>
+	{% for n in img %}
+		<img src="{{ n.photo.url }}">
+	{%endfor%}
+</body>
