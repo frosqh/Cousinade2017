@@ -6,5 +6,10 @@ from django.conf import settings
 
 # Create your models here.
 
+def user_directory_path(instance, filename):
+	return settings.MEDIA_ROOT+'/'+instance.author+'/'+filename
+
+
 class Photos(models.Model):
-	photo = models.ImageField(upload_to=settings.MEDIA_ROOT)
+	author = 'anonymous'
+	photo = models.ImageField(upload_to=user_directory_path)

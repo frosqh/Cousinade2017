@@ -8,4 +8,4 @@ python manage.py makemigrations polls
 python manage.py sqlmigrate polls 0001 &
 python manage.py migrate
 #python manage.py test
-BUILD_ID=dontKillMe nohup python manage.py runserver localhost:8888 &
+BUILD_ID=dontKillMe python manage.py runserver localhost:8888 &

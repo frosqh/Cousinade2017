@@ -28,3 +28,8 @@ nav>a{float: left;
 	text-decoration: none;
 	font-size: 200%;
 	}
+img{
+	max-width: 45%;
+    height: auto;
+    border-radius: 5%;
+}
