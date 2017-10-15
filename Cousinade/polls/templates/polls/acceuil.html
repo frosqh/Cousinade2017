@@ -12,14 +12,16 @@
 
 <body>
 	<header>
-		<h1>Cousinade 2017</h1>
+		<a href='/'><h1>Cousinade 2017</h1></a>
 	</header>
 	<nav>
-		<form method='post'>{%csrf_token%}
-			<input type="Submit" value="Ajoutez vos photos" name = "ajout">
-		</form>
-		</div>
+		<center>
+			<form method='post' class='top'>{%csrf_token%}
+				<input type="Submit" value="Ajoutez vos photos" name = "ajout">
+			</form>
+			<form method='post' class='top'>{%csrf_token%}
+				<input type="Submit" value="Accéder aux photos déja téléchargées" name="view">
+			</form>
+		</center>
 	</nav>
-	
-	<script type="text/javascript" src="../scripts/nav.js" ></script>
 </body>

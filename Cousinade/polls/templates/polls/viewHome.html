@@ -1,0 +1,28 @@
+{% load static %}
+
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="fr">
+<head>
+	<title>Cousinades 2017</title>
+	<meta charset="utf-8"/>
+	<meta name="author" content="Gaël" />
+	<link rel="stylesheet" type="text/css" href="{%static 'polls/acceuil.css'%}"/>
+</head><!DOCTYPE html>
+
+<body>
+	<header>
+		<a href='/'><h1>Cousinade 2017</h1></a>
+	</header>
+	<nav>
+		<div id='blank'></div>
+		<center>
+			<form method='post' class='top'>{%csrf_token%}
+				<input type="Submit" value="Accéder à toutes les photos" name = "all">
+			</form>
+			<form method='post' class='top'>{%csrf_token%}
+				<input type="Submit" value="Trier par personne" name="sort">
+			</form>
+		</center>
+	</nav>
+</body>

@@ -29,7 +29,10 @@ nav>a{float: left;
 	font-size: 200%;
 	}
 img{
-	max-width: 45%;
+	max-width: 100%;
     height: auto;
     border-radius: 5%;
+}
+.top{
+	margin-top: 12%;
 }

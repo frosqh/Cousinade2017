@@ -25,7 +25,7 @@ SECRET_KEY = '(f!7x&iuna&^c31$p+&a1+m7w=j--q(e6g2t-549bn6v5nx32o'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["localhost", "83.196.156.110", "192.168.1.15", "frosqh.redirectme.net"]
 
 
 # Application definition
