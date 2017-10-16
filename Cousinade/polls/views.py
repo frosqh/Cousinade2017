@@ -54,4 +54,9 @@ def add(request):
 			return HttpResponseRedirect("view")
 
 def choice(request):
+	if request.method == 'POST':
+		if 'author' in request.POST:
+			author = request.POST.get('author').replace(" ","_")
+			l = Author.objects.all().filter(authorName=author)
+			return render(request, "polls/view.html", {"img" : Photos.objects.all().filter(author = l[0])})
 	return render(request, "polls/authorChoice.html", {"authors" : Author.objects.all().order_by("authorName")})
