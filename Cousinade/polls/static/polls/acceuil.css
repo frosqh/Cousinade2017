@@ -2,6 +2,8 @@ body{
 	color: white;
 	margin: 0;
 	background-color: lightblue;
+	height: 100%;
+	position: relative;
 	}
 	
 a{
@@ -17,17 +19,24 @@ h1{
 	margin: 0;
 	font-size: 500%;
 	}
-nav>a{float: left;
-	width: 25%;
-	height: 2cm;
+nav{float: left;
+	width: 10%;
+	height:  1000%;
 	background-color: blue;
-	margin-top: 0;
+	margin: 0;
 	text-align: center;
 	transition: all 1s;
 	color: white;
 	text-decoration: none;
 	font-size: 200%;
+	padding-bottom: 0;
+	border: 0;
+	position: absolute;
 	}
+article{float: right;
+		width: 85%;
+		margin: 2.5%;
+		}
 img{
 	max-width: 100%;
     height: auto;
@@ -35,4 +44,26 @@ img{
 }
 .top{
 	margin-top: 12%;
+}
+.input{
+	width: 90%;
+	height: 2cm;
+	float: left;
+	margin: 5%;
+	position: relative;
+	opacity: 0;
+
+}
+.bouton{
+	float left;
+	color: white;
+	font-size: 50%;
+	height: 2cm;
+	width: 90%;
+	margin:5%;
+	border: 1px black double;
+
+}
+#boutons{
+	margin-top: -175%;
 }

@@ -26,10 +26,22 @@
 	<header>
 		<a href='/'><h1>Cousinade 2017</h1></a>
 	</header>
-	{% for n in img %}
-		<img id = 'img' src="{{ n.photo.url }}">
-	{%endfor%}
-
+    <nav>
+        <div class="bouton" ><br/>Ajoutez vos photos</div>
+        <div class="bouton" >Accéder aux photos déja téléchargées</div>
+        <div id="boutons">
+            <form method='post' class='top'>{%csrf_token%}
+                    <input type="Submit" value="Ajoutez vos photos" name = "ajout" class="input">
+                </br>
+                    <input type="Submit" value="Accéder aux photos déja téléchargées" name="view" class="input">
+            </form>
+        </div>
+    </nav>
+    <article>
+    	{% for n in img %}
+    		<img id = 'img' src="{{ n.photo.url }}">
+    	{%endfor%}
+    </article>
 	<script type="text/javascript" src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
 <script type="text/javascript" src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
 <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/fancybox/1.3.4/jquery.fancybox-1.3.4.pack.min.js"></script>
