@@ -10,4 +10,5 @@ urlpatterns = [
 	url(r'^ajout$', views.index, name='ajout'),
 	url(r'^viewhome$', views.viewhome, name='viewhome'),
 	url(r'^choice$', views.choice, name='choice'),
+	url(r'^test$', views.test, name='test'),
 ] + static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)

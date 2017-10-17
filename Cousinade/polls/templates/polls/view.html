@@ -26,8 +26,12 @@
 	<header>
 		<a href='/'><h1>Cousinade 2017</h1></a>
 	</header>
+
+    <a href='/test'>BITE</a>
+
+
 	{% for n in img %}
-		<img id = 'img' src="{{ n.photo.url }}">
+		<img id = 'img' src="{{ n.photo.url }}" alt='{{n.photo.url}}'>
 	{%endfor%}
 
 	<script type="text/javascript" src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
@@ -40,7 +44,7 @@
         var titlePosition = 'inside';
         $(addToAll ? 'img' : 'img.fancybox').each(function(){
             var $this = $(this);
-            var title = $this.attr('title');
+            var title = "<a href='/dl/'> <button style='color:black'> Download ! </button> </a>";
             var src = $this.attr('data-big') || $this.attr('src');
             var a = $('<a href="#" class="fancybox"></a>').attr('href', src).attr('title', title);
             $this.wrap(a);
