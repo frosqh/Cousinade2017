@@ -4,8 +4,12 @@ from django.http import HttpResponse
 from django.http import HttpResponseRedirect
 from polls.models import Photos, Author
 from .templates.polls.image import ImageUploadForm
-
+from wsgiref.util import FileWrapper
 from django.shortcuts import render
+import zipfile
+import os
+from os.path import basename
+
 
 # Create your views here.
 
@@ -18,6 +22,7 @@ def view(request):
 	if request.method=='POST':
 		return add(request)
 	img = Photos.objects.all()
+	request.session['sort'] = None
 	return render(request, "polls/view.html", {"img" : img})
 
 def viewhome(request):
@@ -27,7 +32,7 @@ def viewhome(request):
 		if ('sort' in request.POST):
 			return HttpResponseRedirect('choice')
 
-	return render(request, "polls/viewhome.html")
+	return render(request, "polls/viewHome.html")
 
 def add(request):
 	if request.method == 'POST':
@@ -58,5 +63,38 @@ def choice(request):
 		if 'author' in request.POST:
 			author = request.POST.get('author').replace(" ","_")
 			l = Author.objects.all().filter(authorName=author)
+			request.session['sort'] = author
 			return render(request, "polls/view.html", {"img" : Photos.objects.all().filter(author = l[0])})
 	return render(request, "polls/authorChoice.html", {"authors" : Author.objects.all().order_by("authorName")})
+
+class cd:
+    """Context manager for changing the current working directory"""
+    def __init__(self, newPath):
+        self.newPath = os.path.expanduser(newPath)
+
+    def __enter__(self):
+        self.savedPath = os.getcwd()
+        os.chdir(self.newPath)
+
+    def __exit__(self, etype, value, traceback):
+        os.chdir(self.savedPath)
+
+def test(request):
+	zip = zipfile.ZipFile('compfiles.zip', 'w')
+	if request.session['sort'] != None:
+		m = Author.objects.all().filter(authorName=request.session['sort'])
+		l =Photos.objects.all().filter(author = m[0])
+	else:
+		l = Photos.objects.all()
+	with cd(os.path.abspath(os.path.join(os.getcwd(), os.pardir))):
+		for n in l:
+			zip.write(os.getcwd()+n.photo.url, basename(os.getcwd()+n.photo.url))
+		zip.close()
+	with open('compfiles.zip', 'rb') as pdf:
+		response = HttpResponse(pdf.read())
+		response['content_type'] = 'application/zip'
+		if request.session['sort'] != None:
+			response['Content-Disposition'] = 'attachment;filename=photos_'+request.session['sort']+'.zip'
+		else:
+			response['Content-Disposition'] = 'attachment;filename=photos_all.zip'
+		return response
