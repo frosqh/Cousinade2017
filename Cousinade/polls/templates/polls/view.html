@@ -29,15 +29,17 @@
     <nav>
         <div class="bouton" ><br/>Ajoutez vos photos</div>
         <div class="bouton" >Accéder aux photos déja téléchargées</div>
+        <div class="bouton" ><a href='/test'>BITE</a></div>
         <div id="boutons">
             <form method='post' class='top'>{%csrf_token%}
                     <input type="Submit" value="Ajoutez vos photos" name = "ajout" class="input">
                 </br>
                     <input type="Submit" value="Accéder aux photos déja téléchargées" name="view" class="input">
             </form>
+
         </div>
     </nav>
-    <a href='/test'>BITE</a>
+    
     <article>
     	{% for n in img %}
     		<img id = 'img' src="{{ n.photo.url }}">

@@ -88,7 +88,7 @@ def test(request):
 		l = Photos.objects.all()
 	with cd(os.path.abspath(os.path.join(os.getcwd(), os.pardir))):
 		for n in l:
-			zip.write(os.getcwd()+n.photo.url, basename(os.getcwd()+n.photo.url))
+			zip.write(os.getcwd()+n.photo.url.replace('/',"\\"), basename(os.getcwd()+n.photo.url))
 		zip.close()
 	with open('compfiles.zip', 'rb') as pdf:
 		response = HttpResponse(pdf.read())
